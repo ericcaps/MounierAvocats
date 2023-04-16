@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "jsdelivr",
+  "libraries": [
+    {
+      "library": "uikit@latest",
+      "destination": "wwwroot/lib/uikit"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+﻿@page "/"
+
+<PageTitle>Mounier Avocats - Accueil</PageTitle>
+
+
+<section id="accueil" style="height: 90vh"
+         class="uk-background-cover"
+         data-src="img/tribunalbordeaux.jpeg" 
+         uk-img>
+    
+    <div class="">
+        <div class="uk-overlay uk-overlay-default uk-position-center">
+
+            <h1 class="uk-h1">
+                <span id="typed"></span>
+
+            </h1>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="cabinet" class="uk-section uk-height-viewport uk-background-cover" data-src="img/background.jpeg" uk-img>
+
+    <Hero/>
+</section>
+
+<section id="expertises" class="uk-section uk-height-viewport">
+    <SlideShow />
+</section>
+
+<section id="contact" class="uk-section uk-height-viewport">
+    <Contact />
+</section>
+
+@code {
+
+    [Inject]
+    IJSRuntime JsRuntime { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            JsRuntime.InvokeVoidAsync("typed");
+        }
+        await Task.CompletedTask;
+    }
+
+}

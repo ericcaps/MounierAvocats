@@ -1,0 +1,63 @@
+﻿<!-- Main Navbar -->
+
+<div class="uk-container">
+    <nav class="uk-position-z-index-4 uk-navbar-full uk-background-blend-lighten" uk-navbar uk-sticky>
+
+        <div class="uk-navbar-left">
+            <a href="/" class="uk-navbar-item uk-logo">
+                <img src="img/Logo.png" width="250" alt="Logo">
+            </a>
+        </div>
+        <div class="uk-navbar-right">
+
+            <ul class="uk-navbar-nav uk-visible@s">
+                <li >
+                    <a  data-ref="accueil" @onclick="@(() => OnLinkClick("accueil"))" class="nav-link uk-text-large uk-active">Accueil</a>
+                </li>
+                <li >
+                    <a data-ref="cabinet" @onclick="@(() => OnLinkClick("cabinet"))" class="nav-link uk-text-large">Le Cabinet</a>
+                </li>
+                <li >
+                    <a data-ref="expertises" @onclick="@(() => OnLinkClick("expertises"))" class="nav-link uk-text-large">Expertises</a>
+                </li>
+                <li >
+                    <a data-ref="contact" @onclick="@(() => OnLinkClick("contact"))" class="nav-link uk-text-large">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon uk-toggle="target: #sidenav"></a>
+
+    </nav>
+
+
+    <div id="sidenav" uk-offcanvas="flip: true" class="uk-offcanvas">
+        <div class="uk-offcanvas-bar">
+            <ul class="uk-nav">
+                <li>
+                    <a  class="nav-link uk-text-large uk-active" data-ref="accueil" @onclick="@(() => OnLinkClick("accueil"))">Accueil</a>
+                </li>
+                <li>
+                    <a class="nav-link uk-text-large" data-ref="cabinet" @onclick="@(() => OnLinkClick("cabinet"))">Le Cabinet</a>
+                </li>
+                <li>
+                    <a class="nav-link uk-text-large" data-ref="expertises" @onclick="@(() => OnLinkClick("expertises"))">Expertises</a>
+                </li>
+                <li>
+                    <a class="nav-link uk-text-large" data-ref="contact" @onclick="@(() => OnLinkClick("contact"))">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [Inject]
+    IJSRuntime JsRuntime { get; set; }
+
+    public async void OnLinkClick(string targetId)
+    {
+        JsRuntime.InvokeVoidAsync("OnLinkClick", targetId);
+    }
+
+}
